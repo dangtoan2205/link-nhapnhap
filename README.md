@@ -1,14 +1,9 @@
 ```
-mkdir C:\git-offline-2204
-cd C:\git-offline-2204
-```
+scp ubuntu@192.168.90.12:/home/ubuntu/MailServer-Oxi-Offline-source.tar.gz .
 
-```
-docker run --rm --platform linux/amd64 `
-  -v "${PWD}:/out" `
-  ubuntu:22.04 bash -c 'set -e; apt-get update; mkdir -p /out/partial; touch /tmp/empty-status; apt-get -y --download-only --no-install-recommends -o Dir::State::status=/tmp/empty-status -o Dir::Cache::archives=/out install git; cd /out; sha256sum *.deb > SHA256SUMS'
-```
+tar -xzf .\MailServer-Oxi-Offline-source.tar.gz
 
-```
-dir C:\git-offline-2204\*.deb
+cd .\MailServer-Oxi-Offline
+
+docker build --platform linux/amd64 -t oxi-webmail:offline .
 ```
