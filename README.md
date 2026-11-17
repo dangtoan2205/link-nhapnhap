@@ -1,9 +1,6 @@
 ```
-scp ubuntu@192.168.90.12:/home/ubuntu/MailServer-Oxi-Offline-source.tar.gz .
+New-Item -ItemType Directory -Force C:\docker-offline
 
-tar -xzf .\MailServer-Oxi-Offline-source.tar.gz
-
-cd .\MailServer-Oxi-Offline
-
-docker build --platform linux/amd64 -t oxi-webmail:offline .
+docker save -o C:\docker-offline\oxi-images.tar oxi-main-app:latest nginx:stable-alpine
 ```
+
